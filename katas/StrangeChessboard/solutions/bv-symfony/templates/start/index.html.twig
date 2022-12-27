@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Advachess{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Hello!</h1>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form action="index.php/calculate" method="post">
+                <div class="form-group">
+                    <label for="cs">cs</label>
+                    <input type="text" class="form-control" id="cs" name="cs" aria-describedby="csHelp" placeholder="3,2,1,3,5">
+                    <small id="csHelp" class="form-text text-muted">Comma-separated value (CSV)</small>
+                </div>
+                <div class="form-group">
+                    <label for="cs">rs</label>
+                    <input type="text" class="form-control" id="rs" name="rs" aria-describedby="rsHelp" placeholder="3,2,5,6,2">
+                    <small id="rsHelp" class="form-text text-muted">Comma-separated value (CSV)</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <form action="index.php/print" method="post">
+                <div class="form-group">
+                    <label for="cs">cs</label>
+                    <input type="text" class="form-control" id="cs" name="cs" aria-describedby="csHelp" placeholder="3,2,1,3,5">
+                    <small id="csHelp" class="form-text text-muted">Comma-separated value (CSV)</small>
+                </div>
+                <div class="form-group">
+                    <label for="cs">rs</label>
+                    <input type="text" class="form-control" id="rs" name="rs" aria-describedby="rsHelp" placeholder="3,2,5,6,2">
+                    <small id="rsHelp" class="form-text text-muted">Comma-separated value (CSV)</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Print</button>
+            </form>
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}

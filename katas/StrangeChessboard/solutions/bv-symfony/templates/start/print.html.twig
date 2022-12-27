@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StartController!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Print</h1>
+    
+    <div class='print'>
+        {# <div>( {{ result.white }}, {{ result.black }} )</div> #}
+
+        {% for row in sorted %}
+        <div class='row' style='width:{{printWidth}}px;margin:0;'>
+            {% for cell in row %}
+                
+                <div class='cell' style="display:inline-block;width:calc({{cell.column}}*{{coefficient}}px);height:calc({{cell.row}}*{{coefficient}}px);border:1px solid black;
+                {%if cell.flag is same as 0 %}background-color:black{%endif%};padding:0;">
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

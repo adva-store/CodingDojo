@@ -1,0 +1,55 @@
+:root {
+    --color-yellow: #FFFF00;
+    --color-red: #FF0000;
+    --color-black: #070708;
+}
+.container {
+    padding: 30px;
+}
+.row div {
+    min-height: 120px;
+    padding: 0;
+    border: 10px solid var(--color-black);
+    margin-bottom: 10px;
+}
+.row div::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity linear 100ms;
+}
+.grid {
+    display: grid;
+}
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+.grid-11 {
+    grid-template-columns: repeat(11, 1fr);
+}
+.flex {
+    display: flex;
+    justify-content: center;
+}
+.flex div {
+    width: 120px;
+}
+.sec div {
+    border-radius: 50%;
+    overflow: hidden;
+}
+.sec div::before,
+.m1 div::before,
+.m5 div::before {
+    background-color: var(--color-yellow);
+}
+.ho5 div::before, .ho1 div::before,
+.m5 div:nth-child(3n)::before {
+    background-color: var(--color-red);
+}
+.row div.opacity-1,
+.row div.opacity-1::before {
+    opacity: 1;
+}
