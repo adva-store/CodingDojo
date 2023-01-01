@@ -1,0 +1,66 @@
+
+ .clock {
+  
+    width: 80vw;
+    height: 80vh;
+  
+    display: grid;
+  }
+  
+  .circle{
+    border-radius: 50%;
+    border: 1px solid black;
+    aspect-ratio: 1;
+  }
+
+  .circle--toggled { 
+    background: yellow;
+  }
+  
+  
+  .hours-container, 
+  .minutes-container, 
+  .hours-top, 
+  .hours-bottom, 
+  .minutes-top, 
+  .minutes-bottom {
+    display: grid
+  }
+  
+  .seconds-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hours-top, 
+  .hours-bottom, 
+  .minutes-top, 
+  .minutes-bottom {
+    border-bottom: 1px solid black;
+  }
+  
+  .hours-container {
+    border-top: 1px solid black;
+  }
+  
+  .hours-top, .hours-bottom, .minutes-bottom {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .minutes-top {
+    grid-template-columns: repeat(15, 1fr);
+  }
+
+  .hours-container .item-active{
+    background-color: red;
+  } 
+
+
+ .minutes-container .item-active{
+  background-color: yellow;
+} 
+
+.minutes-top .item-active:nth-of-type(4n){
+  background-color: red;
+} 
+
