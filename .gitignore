@@ -351,3 +351,16 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Python specific files
+__pycache__/
+*.py[cod]
+*$py.class
+
+**/bin/
+**/include/
+**/lib/
+**/lib64/
+**/share/
+
+**/dist*
