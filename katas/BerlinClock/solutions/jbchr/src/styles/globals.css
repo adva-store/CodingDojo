@@ -1,0 +1,9 @@
+body, main {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  background-image: radial-gradient(circle, #084362, #093654, #082a46, #061f38, #04132a);
+}

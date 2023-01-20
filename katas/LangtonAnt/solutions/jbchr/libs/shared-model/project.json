@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/shared-model",
+  "sourceRoot": "libs/shared-model/src",
+  "prefix": "langton-ant",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared-model"],
+      "options": {
+        "jestConfig": "libs/shared-model/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared-model/src/**/*.ts",
+          "libs/shared-model/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
