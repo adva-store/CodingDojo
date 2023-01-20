@@ -64,7 +64,6 @@ export class LangtonAntService {
       antState = game[i][antPos][1] as State;
     }
 
-    // Generate string output from game
     return game;
   }
 }
