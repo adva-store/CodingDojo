@@ -1,0 +1,19 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+  margin-bottom: 30px;
+}
+
+.textarea {
+  height: 200px;
+}
+
+.grid {
+  --fields: 3;
+  display: grid;
+  grid-template-rows: repeat(var(--fields), 50px);
+  grid-template-columns: repeat(var(--fields), 50px);
+  gap: 5px;
+}
