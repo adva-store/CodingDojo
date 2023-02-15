@@ -1,0 +1,70 @@
+#berlin-clock {
+    position:relative;
+    margin:auto;
+    width:50%;
+}
+
+#berlin-clock > div {
+    margin-bottom:10px;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+#berlin-clock > div > div {
+    height: 100px;
+}
+
+#seconds {
+    display:block;
+    border-radius:50%;
+    width:25%;
+    margin:auto;
+    height: 150px;
+    border: 1px solid #000;
+}
+
+#seconds.seconds-filled {
+    background:yellow;
+}
+
+#five-hours, #one-hours, #one-minutes {
+    width:100%;
+    border:5px solid #000;
+}
+
+.five-hour, .one-hour,.one-minute {
+    width:calc(25% - 5px);
+    border-right:5px solid #000;
+}
+
+.five-hour.five-hour-filled, .one-hour.one-hour-filled {
+    background:red;
+}
+
+.five-hour:last-of-type, .one-hour:last-of-type, .one-minute:last-of-type {
+    width:calc(25%);
+    border-right:0;
+}
+
+#five-minutes {
+    width:100%;
+    border:5px solid #000;
+}
+
+.five-minute {
+    width:calc((100% / 11) -  5px);
+    border-right:5px solid #000;
+}
+
+.five-minute.five-minute-filled, .one-minute.one-minute-filled {
+    background:yellow;
+}
+
+.five-minute.five-minute-filled:nth-of-type(3n) {
+    background:red;
+}
+
+.five-minute:last-of-type {
+    border-right:0;
+    width:calc((100% / 11));
+}

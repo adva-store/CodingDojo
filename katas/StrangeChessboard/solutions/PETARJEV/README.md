@@ -1,0 +1,1 @@
+﻿Dieses Projekt kann mit der Hilfe eines PHP Servers gestarten werden. Der Hauptordner ist root der Anwendung. 
