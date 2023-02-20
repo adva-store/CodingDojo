@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LangtonBackend": {
+      "commandName": "Project",
+      "commandLineArgs": "width=10 x=5 y=5 direction=n steps=10"
+    }
+  }
+}

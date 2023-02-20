@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LangtonFrontend": {
+      "commandName": "Project",
+      "commandLineArgs": "1000 C:\\source\\LangtonAnt\\LangtonAnt\\LangtonBackend\\bin\\Debug\\net6.0\\Langton3f2bf2d1-e08c-4748-9d35-ecad1111f30d.txt"
+    }
+  }
+}
