@@ -1,0 +1,72 @@
+/**
+ * Styles for the Langtons Ant
+ **/
+
+body {
+	font-family: Arial, sans-serif;
+}
+h1 {
+	font-size: 40px; 
+	font-weight: bold;
+	margin: 0;
+	padding: 20px 0 12px 0;
+	color: #333;
+}
+p {
+	margin: 0;
+	padding: 0;
+	color: #333;
+}
+
+.content {
+	display:flex;
+	vertical-align: middle;
+	height: 100%;
+}
+.langtonsant {
+	width: 400px; 
+	height: 400px; 
+	margin: auto; 
+	position: relative;
+	background: #ffffff;
+	border: 12px solid #dedede;
+}
+.langtonsant img {
+	width: 100%;
+	height: 100%;
+}
+
+/**
+ * INFOBLOCK
+ * Add display none to the class infoblock to hide it 
+ **/
+
+.infoblock {
+	width: 280px;
+	margin:auto;
+	position: absolute;
+	background-color: #efefef;
+	right:20px;
+	bottom:20px;
+	border-radius: 12px;
+	overflow: hidden;
+	color: #888;
+	padding:20px;
+	/*display:none;*/
+}
+.infoblock p {
+	padding: 6px 12px 8px;
+}
+
+
+
+.antCanvas {
+	position: relative;
+	display: block;
+	margin: auto;
+	border: 12px solid #dedede;
+}
+.pixel {
+	position: absolute;
+	display: inline-block;
+}

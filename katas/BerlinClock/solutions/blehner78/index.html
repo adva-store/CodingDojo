@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>Berlin Clock</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/clock.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="clock">
+            <div class="seconds_row">
+                <div id="second"></div>
+            </div>
+            <div class="five_hours_row">
+                <span class="col"><div id="hour05" class="hb4"></div></span>
+                <span class="col"><div id="hour10" class="hb4"></div></span>
+                <span class="col"><div id="hour15" class="hb4"></div></span>
+                <span class="col"><div id="hour20" class="hb4"></div></span>
+            </div>
+            <div class="one_hour_row">
+                <span class="col"><div id="hour01" class="hb4"></div></span>
+                <span class="col"><div id="hour02" class="hb4"></div></span>
+                <span class="col"><div id="hour03" class="hb4"></div></span>
+                <span class="col"><div id="hour04" class="hb4"></div></span>
+            </div>
+            <div class="five_minutes_row">
+                <span class="col11"><div id="minute05" class="mb11"></div></span>
+                <span class="col11"><div id="minute10" class="mb11"></div></span>
+                <span class="col11"><div id="minute15" class="mb11 red"></div></span>
+                <span class="col11"><div id="minute20" class="mb11"></div></span>
+                <span class="col11"><div id="minute25" class="mb11"></div></span>
+                <span class="col11"><div id="minute30" class="mb11 red"></div></span>
+                <span class="col11"><div id="minute35" class="mb11"></div></span>
+                <span class="col11"><div id="minute40" class="mb11"></div></span>
+                <span class="col11"><div id="minute45" class="mb11 red"></div></span>
+                <span class="col11"><div id="minute50" class="mb11"></div></span>
+                <span class="col11"><div id="minute55" class="mb11"></div></span>
+            </div>
+            <div class="one_minute_row">
+                <span class="col"><div id="minute01" class="mb4"></div></span>
+                <span class="col"><div id="minute02" class="mb4"></div></span>
+                <span class="col"><div id="minute03" class="mb4"></div></span>
+                <span class="col"><div id="minute04" class="mb4"></div></span>
+            </div>
+        </div>
+
+        <!-- If you want to hide the infoblock change the css to display: none --> 
+        <div class="infoblock">
+            <div id="row5" style="text-align: center;"></div>
+            <div id="row0"></div>
+            <div id="row1"></div>   
+            <div id="row2"></div>   
+            <div id="row3"></div>   
+            <div id="row4"></div>
+        </div>        
+    </div>
+</div>
+<!-- SCRIPTS -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        drawClock();
+    });
+</script>
+<!-- / SCRIPTS -->
+</body>
+</html>
