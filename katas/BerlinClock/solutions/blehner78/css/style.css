@@ -1,0 +1,152 @@
+/**
+ * Styles for the Berlin Clock
+ **/
+
+body {
+	font-family: Arial, sans-serif;
+}
+h1 {
+	font-size: 40px; 
+	font-weight: bold;
+	margin: 0;
+	padding: 20px 0 12px 0;
+	color: #333;
+}
+p {
+	margin: 0;
+	padding: 0;
+	color: #333;
+}
+
+.content {
+	display:flex;
+	vertical-align: middle;
+	height: 100%;
+}
+
+/**
+ * CLOCK
+ **/
+.clock {
+	width: 320px; 
+	height: auto; 
+	margin: auto; 
+	position: relative;
+	background: #ffffff;
+}
+.seconds_row {
+	display: block;
+	width: 80px;
+	height: 80px;
+	background-color: #fff;
+	margin: auto;
+	border-radius: 50%;
+	border: 16px solid #ddd;
+	margin-bottom: 12px;
+}
+	#second {
+		position: relative;
+		width: 80px;
+		height: 80px;
+		background-color: yellow;
+		border-radius: 50%;
+	}
+.five_hours_row, .one_hour_row, .five_minutes_row, .one_minute_row {
+	display: block;
+	position: relative;
+	width: 100%;
+	min-height: 60px;
+	border-radius: 12px;
+	padding: 18px 0px 6px 6px;
+	background-color: #ddd;
+	margin-bottom: 12px;
+	overflow: hidden;
+	text-align: center;
+}
+.col {
+	display: inline-block;
+	background-color: #fff;
+	margin-right: 6px;
+	width: 20%;
+	height: 48px;
+	border-radius: 6px;
+}
+.col11 {
+	display: inline-block;
+	background-color: #fff;
+	margin-right: 6px;
+	width: 5%;
+	height: 48px;
+	border-radius: 6px;	
+}
+.hb4 {
+	display: block;
+	width: auto;
+	height: 48px;
+	background-color: red;
+	border-radius: 6px;
+}
+.mb4 {
+	display: block;
+	width: auto;
+	height: 48px;
+	background-color: yellow;
+	border-radius: 6px;
+}
+.mb11 {
+	display: block;
+	width: auto;
+	height: 48px;
+	background-color: yellow;
+	border-radius: 6px;
+}
+.mb11.red {
+	background-color: red;
+}
+
+
+
+/**
+ * INFOBLOCK
+ * Add display none to the class infoblock to hide it 
+ **/
+
+.infoblock {
+	width: 280px;
+	margin:auto;
+	position: absolute;
+	background-color: #efefef;
+	right:20px;
+	bottom:20px;
+	border-radius: 12px;
+	overflow: hidden;
+	color: #888;
+	/*display:none;*/
+}
+#row0 {
+	position: relative; 
+	padding: 6px 12px 8px;
+	background-color: #ddd;
+}
+#row1 {
+	position: relative;
+	padding: 6px 12px 8px;
+}
+#row2 {
+	position: relative; 
+	padding: 6px 12px 8px;
+	background-color: #ddd;
+}
+#row3 {
+	position: relative; 
+	padding: 6px 12px 8px;
+}
+#row4 {
+	position: relative; 
+	padding: 6px 12px 8px;
+	background-color: #ddd;
+}
+#row5 {
+	position: relative; 
+	padding: 6px 12px 8px;
+}
