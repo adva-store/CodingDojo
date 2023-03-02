@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:StrangeChessboard.ViewModels"
+             xmlns:model="clr-namespace:StrangeChessboard.Models"
+             x:Class="StrangeChessboard.MainPage">
+    <ScrollView>
+        <Grid
+            Padding="30,0"
+            VerticalOptions="FillAndExpand">
+
+            <Grid.ColumnDefinitions> 
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" VerticalOptions="Start" Margin="3">
+                <Label
+                Text="Chessboard Size"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18" />
+                <Entry Text="{Binding ChessBoardize}" Keyboard="Numeric"/>
+
+                <Label
+                Text="CS"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18" />
+                <Entry Text="{Binding Cs}" Keyboard="Text"/>
+
+                <Label
+                Text="RS"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="18" />
+                <Entry Text="{Binding Rs}" Keyboard="Text"/>
+
+                <Button
+                Text="Generate and Calculate"
+                SemanticProperties.Hint="Generate and calculate surfaces"
+                Command="{Binding GenerateCommand}" />
+
+            </StackLayout>
+
+            <BoxView Margin="3" WidthRequest="2" Color="AliceBlue" Grid.Column="1"/>
+
+            <Grid HorizontalOptions="StartAndExpand" Grid.Column="2" Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" VerticalOptions="Start">
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Text="Black Surface: "
+                            SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18" />
+                        <Label Text="{Binding BlackSurface}" SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Text="White Surface: "
+                            SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18" />
+                        <Label Text="{Binding WhiteSurface}" SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Text="Surface: "
+                            SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18" />
+                        <Label Text="{Binding ChessBoardSurface}" SemanticProperties.HeadingLevel="Level1"
+                            FontSize="18" />
+                    </StackLayout>
+                </StackLayout>
+                <Grid Grid.Row="1" x:Name="chessGrid" VerticalOptions="FillAndExpand">
+
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
+
