@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:graphics="clr-namespace:LangtonAnt.Utils"
+             x:Class="LangtonAnt.MainPage">
+    <ContentPage.Resources>
+        <graphics:AntDrawable x:Key="AntDrawable" />
+    </ContentPage.Resources>
+    <Grid RowDefinitions="Auto, *">
+        <Grid.Resources>
+            <Style x:Key="LabelStyle"
+                   TargetType="Label">
+                <Setter Property="Margin"
+                        Value="50,15,0,10" />
+                <Setter Property="WidthRequest"
+                        Value="200" />
+            </Style>
+        </Grid.Resources>
+        <VerticalStackLayout Spacing="10"
+                             Padding="0,10,0,0"
+                             VerticalOptions="Center">
+            <HorizontalStackLayout>
+                <Label Text="Kantenlänge:"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry WidthRequest="120"
+                       MaximumHeightRequest="20"
+                       Text="{Binding Data.EdgeLenght, Mode=TwoWay}" />
+                <Label Text="Maximal Anzahl der Züge:"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry WidthRequest="120"
+                       MaximumHeightRequest="20"
+                       Text="{Binding Data.MaxMovesCount, Mode=TwoWay}" />
+                <Label Text="Zuggeschwindigkeit [ms]:"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry WidthRequest="120"
+                       MaximumHeightRequest="20"
+                       Text="{Binding Data.DelayTime, Mode=TwoWay}" />
+                <Button Text="Save result"
+                        Margin="30,0"
+                        Command="{Binding SaveAsFileCommand}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Startposition der Ameise:"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry WidthRequest="55"
+                       Margin="0,-5,0,5"
+                       IsEnabled="False"
+                       MaximumHeightRequest="20"
+                       Text="{Binding Data.AnpStartPosition.Row, Mode=TwoWay}" />
+                <Entry WidthRequest="55"
+                       Margin="10,-5,0,5"
+                       IsEnabled="False"
+                       MaximumHeightRequest="20"
+                       Text="{Binding Data.AnpStartPosition.Column, Mode=TwoWay}" />
+                <Label Text="Blickrichtung der Ameise:"
+                       Style="{StaticResource LabelStyle}" />
+                <Picker WidthRequest="120"
+                        ItemsSource="{Binding Data.OutlookItems}"
+                        MaximumHeightRequest="20"
+                        SelectedItem="{Binding Data.AntSelectedStartOutlook, Mode=TwoWay}" />
+                <Label Text="Anzal Züge:"
+                       Style="{StaticResource LabelStyle}" />
+                <Entry WidthRequest="120"
+                       IsEnabled="False"
+                       MaximumHeightRequest="20"
+                       Text="{Binding Data.CurrentMovesCount, Mode=TwoWay}" />
+                <Button Text="Load result"
+                        Margin="30,0"
+                        Command="{Binding LoadFromFileCommand}" />
+            </HorizontalStackLayout>
+
+            <!--<Label Text="{Binding Data.CurrentResult, Mode=OneWay}"
+                   SemanticProperties.HeadingLevel="Level1"
+                   FontSize="16"
+                   HorizontalOptions="Center" />-->
+            <GraphicsView Drawable="{StaticResource AntDrawable}"
+                          Margin="20"
+                          VerticalOptions="StartAndExpand"
+                          Grid.Column="1"
+                          WidthRequest="500"
+                          HeightRequest="500"
+                          HorizontalOptions="StartAndExpand"
+                          x:Name="antGraphicsView">
+            </GraphicsView>
+
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
