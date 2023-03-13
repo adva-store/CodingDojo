@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:langtonant="clr-namespace:LangtonAnt"
+             x:DataType="langtonant:BackendInViewModel"
+             x:Class="LangtonAnt.BackendIn">
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout Padding="16" Spacing="16" >
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <langtonant:BoolToColorConverter x:Key="boolToColor" TrueObject="Green"  FalseObject="LightGray" />
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+                <StackLayout Spacing="0" >
+                    <Label VerticalTextAlignment="Center" Text="{Binding DisplayGridSize}" />
+                    <Entry Text="{Binding GridSize}" Keyboard="Numeric" />
+                </StackLayout>
+                <StackLayout Spacing="0" >
+                    <Label  VerticalTextAlignment="Center" Text="{Binding DisplayCountSteps}" />
+                    <Entry Text="{Binding CountSteps}" Keyboard="Numeric" />
+                </StackLayout>
+                <StackLayout Spacing="0" >
+                    <Label  VerticalTextAlignment="Center" Text="{Binding DisplayStartPosAnt}" />
+                    <StackLayout Orientation="Horizontal" Spacing="0" >
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label  VerticalTextAlignment="Center" Text="{Binding DisplayStartPosXAnt}" />
+                            <Entry HorizontalOptions="FillAndExpand" Text="{Binding AntPosX}" />
+                        </StackLayout>
+                        <StackLayout  HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0" >
+                            <Label  VerticalTextAlignment="Center" Text="{Binding DisplayStartPosYAnt}" />
+                            <Entry HorizontalOptions="FillAndExpand" Text="{Binding AntPosY}" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Spacing="8" >
+                    <Label Text="{Binding DisplayStartDirectionAnt}" />
+                    <Grid ColumnSpacing="16" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" Text="N" Command="{Binding SetAntDirectionNorthCmd}" BackgroundColor="{Binding IsAntDirNorthSelected, Converter={StaticResource boolToColor}}" />
+                        <Button Grid.Column="1" Text="O" Command="{Binding SetAntDirectionEastCmd}" BackgroundColor="{Binding IsAntDirEastSelected, Converter={StaticResource boolToColor}}"/>
+                        <Button Grid.Column="2" Text="S" Command="{Binding SetAntDirectionSouthCmd}" BackgroundColor="{Binding IsAntDirSouthSelected, Converter={StaticResource boolToColor}}"/>
+                        <Button Grid.Column="3" Text="W" Command="{Binding SetAntDirectionWestCmd}" BackgroundColor="{Binding IsAntDirWestSelected, Converter={StaticResource boolToColor}}" />
+                    </Grid>
+                </StackLayout>
+
+                <BoxView VerticalOptions="FillAndExpand" ></BoxView>
+
+                <StackLayout Spacing="0" >
+                    <Button Grid.Column="3" Text="{Binding DisplayStartBtn}" Command="{Binding StartCmd}" BackgroundColor="LightGray" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

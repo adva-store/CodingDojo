@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:langtonant="clr-namespace:LangtonAnt"
+             x:DataType="langtonant:BackendOutViewModel"
+             x:Class="LangtonAnt.BackendOut">
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <StackLayout Orientation="Vertical" Spacing="8" Padding="16">
+                <StackLayout Orientation="Horizontal" Spacing="16">
+                    <Button Text="&lt;" Command="{Binding PrevStepCmd}" BackgroundColor="LightGray" />
+                    <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding CurrentStepDisplay}" />
+                    <Button Text=">" Command="{Binding NextStepCmd}" BackgroundColor="LightGray" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="16" >
+                    <Button HorizontalOptions="FillAndExpand" Text="Draw" Command="{Binding DrawCmd}" BackgroundColor="LightGray" />
+                    <Button HorizontalOptions="FillAndExpand" Text="Save" Command="{Binding SaveCmd}" BackgroundColor="LightGray" />
+                </StackLayout>
+                <ScrollView >
+                    <ContentView VerticalOptions="FillAndExpand">
+                        <Label Text="{Binding CurrentCode}" />
+                    </ContentView>
+                </ScrollView>
+            </StackLayout>
+            <ContentView IsVisible="{Binding IsLoading}">
+                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="true" />
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

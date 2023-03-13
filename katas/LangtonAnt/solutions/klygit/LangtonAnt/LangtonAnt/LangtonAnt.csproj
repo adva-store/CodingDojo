@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Res\Img\ic_ant_down.png" />
+		<None Remove="Res\Img\ic_ant_left.png" />
+		<None Remove="Res\Img\ic_ant_right.png" />
+		<None Remove="Res\Img\ic_ant_up.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Res\Img\ic_ant_down.png" />
+		<EmbeddedResource Include="Res\Img\ic_ant_left.png" />
+		<EmbeddedResource Include="Res\Img\ic_ant_right.png" />
+		<EmbeddedResource Include="Res\Img\ic_ant_up.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Res\Str\StrResxBackendIn.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StrResxBackendIn.resx</DependentUpon>
+		</Compile>
+		<Compile Update="View\BackendOut.xaml.cs">
+			<DependentUpon>BackendOut.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="View\BackendIn.xaml.cs">
+			<DependentUpon>BackendIn.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="View\Frontend.xaml.cs">
+			<DependentUpon>Frontend.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Res\Str\StrResxBackendIn.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>StrResxBackendIn.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="View\Frontend.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="View\BackendOut.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>

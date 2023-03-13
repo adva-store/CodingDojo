@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:strangechessboard="clr-namespace:StrangeChessboard"
+             x:DataType="strangechessboard:MainPageViewModel"
+             x:Class="StrangeChessboard.MainPage">
+
+    <StackLayout Spacing="16" Padding="16">
+        <StackLayout Spacing="0" Orientation="Horizontal">
+            <Label Text="Input CS: "/>
+            <Label Text="{Binding InputCs}"/>
+        </StackLayout>
+        <StackLayout Spacing="0" Orientation="Horizontal">
+            <Label Text="Input RS: "/>
+            <Label Text="{Binding InputRs}"/>
+        </StackLayout>
+        
+        <StackLayout Spacing="0" Orientation="Horizontal">
+            <Label Text="Total White Area: "/>
+            <Label Text="{Binding TotalWhiteArea}"/>
+        </StackLayout>
+        <StackLayout Spacing="0" Orientation="Horizontal">
+            <Label Text="Total Black Area: "/>
+            <Label Text="{Binding TotalBlackArea}"/>
+        </StackLayout>
+        <StackLayout Spacing="0" Orientation="Horizontal">
+            <Label Text="Total Area: "/>
+            <Label Text="{Binding TotalArea}"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

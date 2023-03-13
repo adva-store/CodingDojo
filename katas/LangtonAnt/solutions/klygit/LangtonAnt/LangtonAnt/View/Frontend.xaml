@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:langtonant="clr-namespace:LangtonAnt"
+             x:DataType="langtonant:FrontendViewModel"
+             x:Class="LangtonAnt.Frontend">
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <StackLayout Orientation="Vertical" Spacing="8">
+                <StackLayout Padding="16" Spacing="8">
+                    <StackLayout Orientation="Horizontal" Spacing="0" >
+                        <Button Text="&lt;" Command="{Binding PrevStepCmd}" BackgroundColor="LightGray" />
+                        <Label HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding DisplayCurrentStep}" />
+                        <Button Text=">" Command="{Binding NextStepCmd}" BackgroundColor="LightGray" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="0" >
+                        <Button Text="{Binding DisplayIsAutoPrevStarted}" Command="{Binding StartAutoPrevCmd}" BackgroundColor="LightGray" />
+                        <Entry HorizontalOptions="FillAndExpand" Keyboard="Numeric" Text="{Binding MoveSpeedInMs}" />
+                        <Label HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="ms" />
+                        <Button Text="{Binding DisplayIsAutoNextStarted}" Command="{Binding StartAutoNextCmd}" BackgroundColor="LightGray" />
+                    </StackLayout>
+                </StackLayout>
+                <ContentView x:Name="contentContainer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                </ContentView>
+                <ContentView Padding="16" >
+                    <Button HorizontalOptions="FillAndExpand" Text="Load from file" Command="{Binding LoadCmd}" BackgroundColor="LightGray" />
+                </ContentView>
+            </StackLayout>
+            <ContentView IsVisible="{Binding IsLoading}">
+                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="true" />
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
