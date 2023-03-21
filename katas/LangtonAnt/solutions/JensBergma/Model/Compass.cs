@@ -1,0 +1,1 @@
+public enum Compass { N, O, S, W, None }
