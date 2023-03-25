@@ -1,0 +1,21 @@
+@import "src/app/app.component.scss";
+
+.time-interval-block {
+
+  border: 1px solid $black;
+  width: max-content;
+  margin-bottom: 4px;
+  display: grid;
+
+  &--five-minute {
+    width: 12px;
+    height: 20px;
+  }
+
+  &--single-hour,
+  &--single-minute,
+  &--five-hour {
+    width: 36.5px;
+    height: 20px;
+  }
+}
