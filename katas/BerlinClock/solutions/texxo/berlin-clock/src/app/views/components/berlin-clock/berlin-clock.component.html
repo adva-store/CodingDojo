@@ -1,0 +1,46 @@
+<div class="berlin-clock">
+
+  <div class="berlin-clock__status-light" [ngStyle]="{ 'background-color': statusLightColor }"></div>
+
+  <!--Display the 5-hour blocks-->
+  <div class="berlin-clock__five-hour-blocks">
+    <ng-container *ngFor="let index of [1,2,3,4]">
+      <app-time-interval-block
+        [color]="currentHours / 5 > index ? 'red' : 'white'"
+        [type]="'five-hour'">
+      </app-time-interval-block>
+    </ng-container>
+  </div>
+
+  <!--Display the 1-hour blocks-->
+  <div class="berlin-clock__single-hour-blocks">
+    <ng-container *ngFor="let index of [1,2,3,4]">
+      <app-time-interval-block
+        [color]="currentHours % 5 >= index ? 'red' : 'white'"
+        [type]="'single-hour'">
+      </app-time-interval-block>
+    </ng-container>
+  </div>
+
+  <!--Display the 5-minute blocks-->
+  <div class="berlin-clock__five-minute-blocks">
+    <ng-container *ngFor="let index of [1,2,3,4,5,6,7,8,9,10,11]">
+      <app-time-interval-block
+        [color]="currentMinutes / 5 >= index ? (index % 3 == 0? 'red' :'yellow') : 'white'"
+        [type]="'five-minute'">
+      </app-time-interval-block>
+    </ng-container>
+  </div>
+
+  <!--Display the 1-minute blocks-->
+  <div class="berlin-clock__single-minute-blocks">
+    <ng-container *ngFor="let index of [1,2,3,4]">
+      <app-time-interval-block
+        [color]="currentMinutes % 5 >= index ? 'yellow' : 'white'"
+        [type]="'single-minute'">
+      </app-time-interval-block>
+    </ng-container>
+  </div>
+
+</div>
+

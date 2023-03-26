@@ -1,7 +1,7 @@
 # Advastore Coding Dojo
 
 Herzlich Willkommen in unserem Coding Dojo,  
-hiermit möchten wie euch einige Übungsaufgaben an die Hand geben, damit ihr eure Fähigkeiten weiterhin erprobt, verbessert und vertieft.  
+hiermit möchten wir euch einige Übungsaufgaben an die Hand geben, damit ihr eure Fähigkeiten weiterhin erprobt, verbessert und vertieft.  
 
 Ziel ist es, in regelmäßigen Abständen zusammen zu kommen, um gemeinsam ein paar der Katas zu lösen und um uns gegenseitig Lösungen zu präsentieren.  
 
