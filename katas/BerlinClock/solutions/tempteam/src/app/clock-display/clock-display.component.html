@@ -1,0 +1,14 @@
+<div class="clock" *ngIf="berlinTime$ | async as berlinTime">
+  <div class="clock__row" *ngFor="let row of berlinTime; let rowIndex = index">
+    <div
+      class="clock__light"
+      *ngFor="let light of row.split(''); let lightIndex = index"
+      [ngClass]="{
+        'clock__light--red': light === 'R',
+        'clock__light--yellow': light === 'Y',
+        'clock__light--off': light === 'O',
+        'clock__light--round': rowIndex === 0
+      }"
+    ></div>
+  </div>
+</div>
