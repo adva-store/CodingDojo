@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 namespace App;
-require_once '/Users/k.bielefeld/development/CodingDojo/katas/StrangeChessboard/solutions/texxo/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 use App\Models\Chessboard;
 use App\Services\CalculationService;
 
