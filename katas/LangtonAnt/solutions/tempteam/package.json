@@ -1,0 +1,19 @@
+{
+  "name": "langton-ant",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "install:api": "cd api && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm install && concurrently \"npm run install:api\" \"npm run install:frontend\"",
+    "start:api": "cd api && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:all": "concurrently \"npm run start:api\" \"npm run start:frontend\""
+  },
+  "keywords": [],
+  "author": "Alex Sinakow",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

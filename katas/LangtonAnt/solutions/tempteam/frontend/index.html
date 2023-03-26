@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Langton's Ant</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="tools">
+        <h1>Langton Ant</h1>
+        <form class="controls" id="form">
+          <input type="file" id="file" />
+          <label>Speed (ms): <input id="speed" type="number" value="200" /></label>
+        </form>
+
+        <div class="info">
+          <span>Edge Length: <span id="edgeLength">0</span></span>
+          <span>Starting Position: (<span id="startingPosition">0, 0</span>)</span>
+          <span>Viewing Direction: <span id="viewingDirection">-</span></span>
+          <span>Number of Moves: <span id="moves">0</span></span>
+        </div>
+
+        <button id="downloadLink">Download CSV</button>
+      </div>
+
+      <div class="grid" id="grid" style="--fields: 0;"></div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
