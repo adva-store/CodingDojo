@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StrangeChessboard.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Strange Chessboard"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Mit dieser App können Sie ein Strange Chessboard generieren und ausmessen."
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="generateBtn"
+                Text="Generiere Chessboard"
+                Clicked="OnGenerateBtnClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

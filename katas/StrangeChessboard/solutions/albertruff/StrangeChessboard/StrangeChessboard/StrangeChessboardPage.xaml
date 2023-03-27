@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StrangeChessboard.StrangeChessboardPage"
+             Title="Strange Chessboard">
+    <VerticalStackLayout Padding="20,0" Spacing="10" VerticalOptions="StartAndExpand">
+        <Label 
+            Text="Strange Chessboard"
+            FontAttributes="Bold"
+            FontSize="Title"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <HorizontalStackLayout Spacing="5">
+            <Label 
+            Text="Werte für die Spalten:"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="{Binding ColumnNumbers}"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="5">
+            <Label 
+            Text="Werte für die Zeilen:"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="{Binding RowNumbers}"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="5">
+            <Label 
+            Text="Die Fläche der weißen Zellen:"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="{Binding TotalWhiteArea}"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="5">
+            <Label 
+            Text="Die Fläche der schwarzen Zellen:"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="{Binding TotalBlackArea}"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="5">
+            <Label 
+            Text="Die Fläche des gesamten Schachbretts:"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <Label 
+            Text="{Binding TotalArea}"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        
+        <Border x:Name="chessBorder" Stroke="Black" StrokeThickness="4" HeightRequest="400" WidthRequest="400">
+            
+        </Border>
+        <Button
+                x:Name="generateBtn"
+                Text="Generiere neues Chessboard"
+                Command="{Binding GenerateNewChessboardCommand}"
+                HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
