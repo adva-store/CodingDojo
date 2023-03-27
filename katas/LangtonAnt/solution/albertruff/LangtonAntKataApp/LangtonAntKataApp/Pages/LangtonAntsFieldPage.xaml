@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LangtonAntKataApp.Pages.LangtonAntsFieldPage"
+             Title="Langtons Ameise Feld">
+    <VerticalStackLayout Padding="10,0" Spacing="10" VerticalOptions="Center">
+        <Label 
+            Text="Ameisen Feld"
+            FontSize="Title"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Border x:Name="fieldBorder" StrokeThickness="4" Stroke="Black" Background="White" WidthRequest="400" HeightRequest="400"/>
+    </VerticalStackLayout>
+</ContentPage>
