@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StrangeChessboard.MainPage"
+    x:Name="Root">
+
+    <ScrollView>
+        <Grid
+            Margin="20"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+            ColumnDefinitions="Auto,*"
+            RowSpacing="10"
+            ColumnSpacing="10">
+
+            <!-- title -->
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Text="Strange Chessboard"
+                FontSize="22"
+                FontAttributes="Bold"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"/>
+
+            <!-- configuration -->
+
+            <!-- columns -->
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Columns:"
+                VerticalOptions="Center"/>
+
+            <Entry
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding Columns, Source={x:Reference Root}}"/>
+
+            <!-- rows -->
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Rows:"
+                VerticalOptions="Center"/>
+
+            <Entry
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding Rows, Source={x:Reference Root}}"/>
+
+            <!-- total area -->
+            <HorizontalStackLayout
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                Spacing="10">
+
+                <Label
+                    Text="🪵"
+                    FontSize="20"/>
+
+                <Label
+                    VerticalOptions="Center"
+                    Text="{Binding ChessboardTotalArea, Source={x:Reference Root}}"/>
+
+            </HorizontalStackLayout>
+
+            <!-- chessboard -->
+            <GraphicsView
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                WidthRequest="{Binding ChessboardWidth, Source={x:Reference Root}}"
+                HeightRequest="{Binding ChessboardHeight, Source={x:Reference Root}}"
+                Drawable="{Binding ChessboardDrawable, Source={x:Reference Root}}"/>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
