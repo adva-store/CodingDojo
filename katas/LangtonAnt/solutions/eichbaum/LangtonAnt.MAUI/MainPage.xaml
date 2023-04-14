@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LangtonAnt.MAUI.MainPage"
+    x:Name="Root"
+    Title="Setup">
+
+    <ScrollView>
+        <Grid
+            Margin="20"
+            RowSpacing="10"
+            ColumnSpacing="10"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+            ColumnDefinitions="Auto,*,Auto">
+
+            <!-- title -->
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                Text="Langton Ant"
+                HorizontalOptions="Center"
+                FontSize="22"/>
+
+            <!-- speed -->
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Speed:"
+                VerticalOptions="Center"/>
+
+            <Entry
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding Speed, Source={x:Reference Root}}"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="2"
+                Text="ms"
+                VerticalOptions="Center"/>
+
+            <!-- speed -->
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Size:"
+                VerticalOptions="Center"/>
+
+            <Entry
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding Size, Source={x:Reference Root}}"/>
+
+            <!-- start row -->
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Start Row:"
+                VerticalOptions="Center"/>
+
+            <Entry
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding StartRow, Source={x:Reference Root}}"/>
+
+            <!-- start column -->
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Start Column:"
+                VerticalOptions="Center"/>
+
+            <Entry
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding StartColumn, Source={x:Reference Root}}"/>
+
+            <!-- submit -->
+            <Button
+                Margin="0,20,0,0"
+                Grid.Row="5"
+                Grid.ColumnSpan="3"
+                Text="Start"
+                BackgroundColor="Black"
+                TextColor="White"
+                HeightRequest="45"
+                CornerRadius="23"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnSubmitClicked"
+                FontAttributes="Bold"/>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

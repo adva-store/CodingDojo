@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LangtonAnt.MAUI.AntPage"
+    Title="{Binding Status, Source={x:Reference Root}}"
+    x:Name="Root">
+
+    <Grid
+        RowDefinitions="*,Auto,Auto">
+
+        <!-- drawable -->
+        <GraphicsView
+            Grid.Row="0"
+            WidthRequest="300"
+            HeightRequest="300"
+            Drawable="{Binding Drawable, Source={x:Reference Root}}"/>
+
+        <!-- grid string -->
+        <Editor
+            Grid.Row="1"
+            HeightRequest="100"
+            WidthRequest="300"
+            Text="{Binding GridString, Source={x:Reference Root}}"
+            FontSize="10"/>
+
+        <!-- 🐜 -->
+        <Label
+            Grid.Row="2"
+            Text="🐜"
+            FontSize="50"
+            Margin="20"
+            HorizontalOptions="Center"/>
+
+    </Grid>
+
+</ContentPage>
