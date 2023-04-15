@@ -9,16 +9,19 @@ public class AntField
 	protected readonly int _size;
 	protected int _currentRow;
 	protected int _currentColumn;
+	protected int _moves;
 	protected Direction _currentDirection;
 
-	public AntField(int size, int startRow, int startColumn, Direction direction)
+	public AntField(int size = 20, int? startRow = null, int? startColumn = null, Direction direction = Direction.North, int moves = 0)
 	{
 		_matrix = new();
 		_size = size;
-		_currentRow = startRow;
-		_currentColumn = startColumn;
+		_currentRow = startRow ?? (size / 2);
+		_currentColumn = startColumn ?? (size / 2);
 		_currentDirection = direction;
+		_moves = 0;
 		InitAntField();
+		DoInitialMoves(moves);
 	}
 
 	private void InitAntField()
@@ -31,6 +34,17 @@ public class AntField
 		}
 	}
 
+	private void DoInitialMoves(int moves)
+	{
+		for (var i = 0; i < moves; i++)
+			if (!Move())
+				break;
+	}
+
+	/// <summary>
+	/// moves the ant
+	/// </summary>
+	/// <returns>false if reached wall, true otherwise</returns>
 	public bool Move()
 	{
 		var field = _matrix[_currentRow][_currentColumn];
@@ -50,6 +64,9 @@ public class AntField
 			else
 				_currentDirection--; // rotate left
 		}
+
+		// toggle color
+		field.Color = field.Color == Color.Black ? Color.White : Color.Black;
 
 		// move
 		switch (_currentDirection)
@@ -76,8 +93,7 @@ public class AntField
 				break;
 		}
 
-		// toggle color
-		field.Color = field.Color == Color.Black ? Color.White : Color.Black;
+		_moves++;
 
 		return true;
 	}
@@ -98,5 +114,8 @@ public class AntField
 		return grid.TrimEnd(',');
 	}
 
+	public void SaveToFile(string path) => System.IO.File.WriteAllText(path, ToString());
 	public int Size => _size;
+	public int Moves => _moves;
+	public Direction Direction => _currentDirection;
 }

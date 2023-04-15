@@ -25,7 +25,8 @@ public partial class AntPage : ContentPage
 	}
 
 	public Ant.AntDrawable Drawable => new(_antField.Size, _antField.ToString());
-	public string GridString => _antField.ToString();
+	public int Moves => _antField.Moves;
+	public string Direction => _antField.Direction.GetAsString();
 
 	private async Task RunAnt()
 	{
@@ -34,20 +35,31 @@ public partial class AntPage : ContentPage
 
 		await Task.Delay(_speed);
 
-		if (!_antField.Move())
+		try
 		{
-			// wall reached
-			Status = "Ant stopped";
-			return;
+			if (!_antField.Move())
+			{
+				// wall reached
+				Status = "Ant stopped";
+				return;
+			}
+		}
+		finally
+		{
+			Refresh();
 		}
 
+		_ = Task.Run(RunAnt);
+	}
+
+	private void Refresh()
+	{
 		MainThread.BeginInvokeOnMainThread(() =>
 		{
 			OnPropertyChanged(nameof(Drawable));
-			OnPropertyChanged(nameof(GridString));
+			OnPropertyChanged(nameof(Moves));
+			OnPropertyChanged(nameof(Direction));
 		});
-
-		_ = Task.Run(RunAnt);
 	}
 
 	private string _Status;
@@ -59,5 +71,12 @@ public partial class AntPage : ContentPage
 			_Status = value;
 			OnPropertyChanged(nameof(Status));
 		}
+	}
+
+	async void OnSaveButtonClicked(System.Object sender, System.EventArgs e)
+	{
+		var path = Path.Combine(FileSystem.CacheDirectory, "ant.txt");
+		_antField.SaveToFile(path);
+		await Share.RequestAsync(new ShareFileRequest(new ShareFile(path, "text/plain")));
 	}
 }

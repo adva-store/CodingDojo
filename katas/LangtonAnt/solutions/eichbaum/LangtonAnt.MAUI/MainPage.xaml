@@ -11,7 +11,7 @@
             Margin="20"
             RowSpacing="10"
             ColumnSpacing="10"
-            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
             ColumnDefinitions="Auto,*,Auto">
 
             <!-- title -->
@@ -76,16 +76,37 @@
                 Grid.Column="1"
                 Text="{Binding StartColumn, Source={x:Reference Root}}"/>
 
+            <!-- initial moves -->
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="Initial moves:"
+                VerticalOptions="Center"/>
+
+            <Entry
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="{Binding InitialMoves, Source={x:Reference Root}}"/>
+
+            <!-- direction -->
+            <Label
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="Initial direction:"
+                VerticalOptions="Center"/>
+
+            <Picker
+                Grid.Row="6"
+                Grid.Column="1"
+                ItemsSource="{Binding Directions, Source={x:Reference Root}}"
+                SelectedItem="{Binding Direction, Source={x:Reference Root}}"/>
+
             <!-- submit -->
             <Button
                 Margin="0,20,0,0"
-                Grid.Row="5"
+                Grid.Row="7"
                 Grid.ColumnSpan="3"
                 Text="Start"
-                BackgroundColor="Black"
-                TextColor="White"
-                HeightRequest="45"
-                CornerRadius="23"
                 HorizontalOptions="FillAndExpand"
                 Clicked="OnSubmitClicked"
                 FontAttributes="Bold"/>
