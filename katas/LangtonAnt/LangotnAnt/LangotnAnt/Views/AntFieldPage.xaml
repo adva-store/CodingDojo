@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LangotnAnt.Views.AntFieldPage"
+             xmlns:vm="clr-namespace:LangotnAnt.ViewModel"
+             xmlns:m="clr-namespace:LangotnAnt.Model"
+             x:DataType="vm:AntFieldViewModel"
+             >
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Schnell"/>
+            <Slider Maximum="2000" Minimum="100" WidthRequest="300" Value="{Binding TickDelay}" IsEnabled="{Binding IsNotStarted}"/>
+            <Label Text="Langsam"/>
+            <Button Text="Start" Command="{Binding ExecuteTurnCommand}" IsEnabled="{Binding IsNotStarted}"/>
+        </HorizontalStackLayout>
+        
+        <Grid HorizontalOptions="Start" ColumnDefinitions="{Binding Columns}" RowDefinitions="{Binding Rows}" BindableLayout.ItemsSource="{Binding Fields}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate x:DataType="m:AntField">
+                    <Border HeightRequest="64" WidthRequest="64" BackgroundColor="{Binding FieldColor}" Grid.Row="{Binding Position.Y}" Grid.Column="{Binding Position.X}">
+                        <Grid>
+                            <Image Source="langtons_ant.png" 
+                                   Rotation="{Binding Source={RelativeSource AncestorType={x:Type vm:AntFieldViewModel}}, Path=LangtonsAnt.ImageRotation}" 
+                                   IsVisible="{Binding HasAnt}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

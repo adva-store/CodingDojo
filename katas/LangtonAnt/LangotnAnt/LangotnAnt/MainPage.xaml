@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LangotnAnt.ViewModel"
+             xmlns:m="clr-namespace:LangotnAnt.Model"
+             x:DataType="vm:MainSettingsViewModel"
+             x:Class="LangotnAnt.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+            <Label Text="Kantenlänge"/>
+            <Entry Text="{Binding GridLength}"/>
+            <Label Text="Startposition"/>
+            <Entry Text="{Binding StartX}"/>
+            <Entry Text="{Binding StartY}"/>
+            <Label Text="Blickrichtung"/>
+            <Picker SelectedItem="{Binding GazeDirection}" ItemsSource="{Binding AllDirections}"/>
+            <Label Text="Zuganzahl"/>
+            <Entry Text="{Binding EndTurn}"/>
+            <Button Text="Start" Command="{Binding StartLangtonsAntCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
