@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:StrangeChess"
+             x:Class="StrangeChess.MainPage"
+             x:DataType="local:MainPageViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+
+            <Label
+                Text="Spaltenbreiten"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Entry Text="{Binding RawColumnWidths}"/>
+            
+
+            <Label
+                Text="Zeilenhöhen"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Entry Text="{Binding RawRowHeights}"/>
+            <Button Text="Schachbrett berechnen" Command="{Binding CalculateCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
