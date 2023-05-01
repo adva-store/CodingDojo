@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Berlin Clock</title>
+        <link rel="stylesheet" href="css/main.css"/>
+    </head>
+    <body>
+        <table>
+            <tr id="seconds">
+                <td></td>
+            </tr>
+            <tr id="fiveHours">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="hours">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="fiveMinutes">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="minutes">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <script type="text/javascript">
+
+function colorCells(value, cells, mainColor, secondaryColor = ''){
+    var cellCount = cells.length;
+    for(i = 1; i <= cellCount; i++){
+        if(i <= value){
+            if(secondaryColor.length != 0 && i % 3 == 0){
+                cells[i-1].classList = secondaryColor;
+            } else {
+                cells[i-1].classList = mainColor;
+            }
+        } else {
+            cells[i-1].classList = '';
+        }
+    }
+}
+
+fetch('http://localhost:3000/berlinClockData')
+.then(response => response.json())
+.then(data => {
+    console.log(data)
+    colorCells(data[0], document.getElementById('fiveHours').getElementsByTagName('td'), 'red');
+    colorCells(data[1], document.getElementById('hours').getElementsByTagName('td'), 'red');
+    colorCells(data[2], document.getElementById('fiveMinutes').getElementsByTagName('td'), 'yellow', 'red');
+    colorCells(data[3], document.getElementById('minutes').getElementsByTagName('td'), 'yellow');
+    colorCells(data[4], document.getElementById('seconds').getElementsByTagName('td'), 'yellow');
+})
+        </script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+table td{
+    border: 1px solid black;
+    padding: 30px;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.white{
+    background-color: white;
+}
