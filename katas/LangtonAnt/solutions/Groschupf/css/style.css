@@ -1,0 +1,23 @@
+#grid td {
+	width: 60px;
+	height: 60px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+
+.black{
+	background-color: darkgray;
+}
+.n{
+	rotate: 0;
+}
+.o{
+	rotate: 90deg;
+}
+.s{
+	rotate: 180deg;
+}
+.w{
+	rotate: 270deg;
+}
