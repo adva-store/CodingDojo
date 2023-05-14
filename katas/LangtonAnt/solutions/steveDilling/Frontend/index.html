@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <script type="importmap">
+            {
+                "imports": {
+                    "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+                }
+            }
+        </script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <style>
+            .bgBlack {
+                background-color: darkgray;
+            }
+            .bgWhite{
+                background-color: white;
+            }
+            .rotate-n{
+                transform: rotate(90deg);
+            }
+            .rotate-e{
+                transform: rotate(180deg);
+            }
+            .rotate-s{
+                transform: rotate(270deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{ title }}</h1>
+            <div>
+                <label class="text-reader">
+                    <input type="file" class="form-control" @change="readFile">
+                </label>
+            </div>
+            <div>
+                <hr />
+                <div class="d-flex flex-row mb-3">
+                    <div class="p-2">Dimension:</div>
+                    <div class="p-2">{{dimension == 0 ? "-" : dimension}}</div>
+                    <div class="p-2">StartPosition:</div>
+                    <div class="p-2">{{startPosition == undefined ? "-" : startPosition}}</div>
+                    <div class="p-2">StartDirection:</div>
+                    <div class="p-2">{{startDirection === "" ? "-" : startDirection}}</div>
+                    <div class="p-2">Moves:</div>
+                    <div class="p-2">{{this.lines.length === 0 ? 0 : this.lines.length -1}}</div>
+                </div>
+                <div class="d-flex flex-row mb-3">
+                    <div class="p-2">Move speed:</div>
+                    <div class="p-2">
+                        <input type="number" @change="setMoveSpeed" min="250" max="2000" value="500">
+                    </div>
+                </div>
+                <div class="d-flex flex-row mb-3">
+                    <div class="p-2">
+                        <button type="button" class="btn btn-primary" @click="simulateMoves">Start</button>
+                    </div>
+                    <div class="p-2">
+                        <button type="button" class="btn btn-secondary" @click="reset">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="d-flex flex-row mb-3">
+                <div class="p-2">Move:</div>
+                <div class="p-2">{{lastLine > lines.length-1 ? lines.length-1 : lastLine}}</div>
+            </div>
+            <div class="d-flex flex-row" v-for="x in dimension">
+                <div class="border" :class="getBgColorClass(x-1, y-1)" style="width: 4em; height: 4em; text-align: center;" v-for="y in dimension">
+                    <div v-if="map[x-1][y-1].length == 2">
+                        <img :class="getRotateClass(x-1, y-1)" src="./assets/ant.png" width="50" height="50" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module">
+            import { createApp } from 'vue'
+            createApp({
+                data: () => {
+                    return {
+                        title: 'LangtonAnt - Frontend',
+                        moveSpeed: 500,
+                        content: "",
+                        dimension: 0,
+                        startPosition: undefined,
+                        startDirection: "",
+                        lines: [],
+                        map: Array(0),
+                        lastLine:0,
+                        stop: false,
+                        running: false
+                    }
+                },
+                methods: {
+                    getDimension() {
+                        this.lines = this.content.split(" ");
+                        this.lines.splice(this.lines.length -1, 1);
+                        let len = this.lines[0].split(",").length;
+                        this.dimension = Math.sqrt(len);
+                        this.getStartPosition();
+                    },
+                    getStartPosition(){
+                        let cells = this.lines[0].split(",");
+                        let cellIndex =0;
+
+                        //create map
+                        this.createMap(this.lines[0]);
+                        //find the first ant entry
+                        
+                        let direction = "";                        
+                        let xp, yp = -1;
+                        for(let ypos = 0; ypos < this.dimension; ypos++){
+                            for(let xpos = 0; xpos < this.dimension; xpos++){
+                                if(this.map[xpos][ypos].length === 2){
+                                    direction = this.map[xpos][ypos][0];
+                                }
+                                if(this.map[xpos][ypos] === "s"){
+                                    xp = xpos;
+                                    yp = ypos;
+                                }
+                            }
+                        }
+                        this.startDirection = this.getAntDirection(direction, xp, yp);
+                        this.startPosition = {x: yp, y: xp};
+
+                        //create start map
+                        let startLine = "";
+                        for(let xpos=0; xpos< this.dimension; xpos++){
+                            for(let ypos=0; ypos < this.dimension; ypos++){
+                                if(startLine !== ""){
+                                    startLine +=","
+                                }
+
+                                if(xp === xpos && yp === ypos){
+                                    startLine += this.startDirection;
+                                }
+
+                                startLine +="w";
+                            }
+                        }
+                        this.lines.splice(0,0, startLine);
+                        this.createMap(this.lines[0]);
+                    },
+                    readFile(e){
+                        const file = e.target.files[0];
+                        const reader = new FileReader();
+                        console.log(this.content);
+                        reader.onload = e => {
+                            let c = e.target.result;
+                            c = c.replace(/\n/g, " ");
+                            this.content = c;
+                            this.getDimension();
+                        }
+                        reader.readAsText(file);
+                        this.lastLine = 0;
+                    },
+                    canMove(direction, color, xpos, ypos){
+                        let newDirection = "";
+                        let xNew = xpos, yNew = ypos;
+
+                        switch(direction){
+                            case "n":
+                                yNew = ypos +1;
+                                break;
+                            case "o":
+                                xNew = xpos -1;
+                                break;
+                            case "s":
+                                yNew = ypos -1;
+                                break;
+                            default:
+                                xNew = xpos +1;
+                                break;
+                        }
+                        return {x: xNew, y: yNew, d: this.getAntDirection(direction, this.map[xNew][yNew])};
+                    },
+                    getAntDirection(actDirection, colorBefore){
+                        switch(actDirection){
+                            case "n":
+                                return colorBefore === "w" ? "o" : "w";
+                            case "o":
+                                return colorBefore === "w" ? "s" : "n";
+                            case "s":
+                                return colorBefore === "w" ? "ow" : "o";
+                            case "w":
+                                return colorBefore === "w" ? "n" : "s";
+                        }
+                    },
+                    createMap(line){
+                        let cells = line.split(",");
+                        let rc = new Array(this.dimension);
+                        let cellIndex = 0;
+                        for(let rowIndex = 0; rowIndex < this.dimension; rowIndex++)
+                        {
+                            let letRowCells = cells.slice(cellIndex, cellIndex + this.dimension);
+                            rc[rowIndex] = letRowCells;
+                            cellIndex += this.dimension;
+                        }
+                        this.map = rc;
+                    },
+                    getRotateClass(x, y){
+                        if (this.map[x][y].length === 2)
+                        {
+                            switch(this.map[x][y][0]){
+                                case "n":
+                                    return "rotate-n";
+                                case "o":
+                                    return "rotate-e";
+                                case "s":
+                                    return "rotate-s";
+                            }
+                        }
+                    },
+                    getBgColorClass(x,y){
+                        let cellValue =this.map[x][y];
+                        cellValue = cellValue.length === 2 ? cellValue[1] : cellValue[0];
+                        if(cellValue === "w"){
+                            return "bgWhite";
+                        }
+                        return "bgBlack";
+                    },
+                    setMoveSpeed(e){
+                        this.moveSpeed = Number(e.target.value);
+                    },                    
+                    simulateMoves(){
+                        setTimeout(() => {
+                            if(this.stop === true){
+                                this.stop = false;
+                                this.running = false;
+                                return;
+                            }
+                            this.lastLine++;
+                            if(this.lastLine < this.lines.length && this.lines[this.lastLine]!== ""){
+                                this.running = true;
+                                this.createMap(this.lines[this.lastLine]);
+                                this.simulateMoves();
+
+                            }else{
+                                this.running = false;
+                            }
+                        }, this.moveSpeed)
+                    },
+                    reset(){
+                        if(this.running){
+                            this.stop = true;
+                        }
+                        this.lastLine = 0;
+                        if(this.dimension > 0){
+                            this.getDimension();
+                        }
+                    }
+
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html> 
