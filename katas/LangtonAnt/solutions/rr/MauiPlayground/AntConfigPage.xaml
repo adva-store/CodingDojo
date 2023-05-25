@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiPlaygroundApp.AntConfigPage"
+             Title="AntConfigPage">
+    <VerticalStackLayout HorizontalOptions="Center">
+        <Label Text="Move speed (delay in ms)" />
+        <Entry Keyboard="Numeric" Placeholder="Move speed" Text="{Binding MoveSpeed}"/>
+
+        <Label Text="Size of the grid (number of cells)" />
+        <Entry Keyboard="Numeric" Placeholder="Grid size" Text="{Binding GridSize}"/>
+
+        <Label Text="Starting position column (zero based)" Padding="0,20,0,0"/>
+        <Entry Keyboard="Numeric" Placeholder="Column" Text="{Binding StartColumn}"/>
+
+        <Label Text="Starting position row (zero based)" Padding="0,20,0,0"/>
+        <Entry Keyboard="Numeric" Placeholder="Row" Text="{Binding StartRow}"/>
+        
+        <Label Text="Starting direction" Padding="0,20,0,0"/>
+        <Picker ItemsSource="{Binding AntDirections}" SelectedItem="{Binding StartDirection}" x:Name="StartDirectionPicker"/>
+        
+        <Label Text="Number of steps" Padding="0,20,0,0"/>
+        <Entry Keyboard="Numeric" Placeholder="Steps" Text="{Binding NumberOfSteps}" />
+
+        <Button Text="Go!" Clicked="OnGoButtonClicked"/>
+    </VerticalStackLayout>
+</ContentPage>
