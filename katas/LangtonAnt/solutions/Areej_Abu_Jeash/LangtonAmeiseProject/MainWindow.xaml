@@ -1,0 +1,60 @@
+﻿<Window x:Class="LangtonAntProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LangtonAntProject"
+        mc:Ignorable="d"
+        Title="Langton Ameise" Height="500" Width="800" Background="#FFDDDDDD" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock >Kantenlänge:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="0" Name="GridSize" PreviewTextInput="NumberValidationTextBox">11</TextBox>
+
+            <TextBlock Grid.Row="0" Grid.Column="1">Startposition x:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="StartPosition_x" PreviewTextInput="NumberValidationTextBox">6</TextBox>
+
+            <TextBlock Grid.Row="0" Grid.Column="2">Startposition y:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="2" Name="StartPosition_y" PreviewTextInput="NumberValidationTextBox">6</TextBox>
+
+            <TextBlock Grid.Row="0" Grid.Column="3">Blickrichtung:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="3" Name="Direction">w</TextBox>
+
+            <TextBlock Grid.Row="0" Grid.Column="4">Anzahl der Züge</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="4" Name="IterationCount" PreviewTextInput="NumberValidationTextBox">10</TextBox>
+           
+            <TextBlock Grid.Row="0" Grid.Column="5">Geschwindigkeit</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="5" Name="Speed" PreviewTextInput="NumberValidationTextBox">90</TextBox>
+
+        </Grid>
+        <Grid  Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button  Grid.Column="0"  Width="100" Click="InitGrid">Initialisieren</Button>
+
+            <Button   Grid.Column="1" Click="StartDrawing" Width="100">Start</Button>
+
+        </Grid>
+        <Canvas Name="Canvas" Grid.Row="3" ></Canvas>
+    </Grid>
+</Window>
