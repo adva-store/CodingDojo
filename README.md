@@ -1,4 +1,4 @@
-# Advastore Coding Dojo
+ # Advastore Coding Dojo
 
 Herzlich Willkommen in unserem Coding Dojo,  
 hiermit möchten wie euch einige Übungsaufgaben an die Hand geben, damit ihr eure Fähigkeiten weiterhin erprobt, verbessert und vertieft.  
