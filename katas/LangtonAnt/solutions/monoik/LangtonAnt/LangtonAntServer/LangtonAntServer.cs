@@ -7,9 +7,10 @@ using System.Runtime.Remoting.Channels.Tcp;
 
 namespace LangtonAntServer
 {
-	class LangtonAntServer : MarshalByRefObject
+	internal class LangtonAntServer : MarshalByRefObject
 	{
-		static void Main(string[] args)
+		// A simple class launching the test server.
+		private static void Main(string[] args)
 		{
 			TcpChannel chan = new TcpChannel(8085);
 			ChannelServices.RegisterChannel(chan, false);

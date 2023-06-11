@@ -41,10 +41,10 @@ namespace LangtonAntClient
 			NewGameSettingsPopup popup = new NewGameSettingsPopup();
 			popup.ShowDialog();
 
-
+			// Connect to the game server.
 			Type type = typeof(LangtonAntServerRemoteClass);
             remoteServerObj = (LangtonAntServerRemoteClass)Activator.GetObject(type,
-            "tcp://localhost:8085/LangtonAntServer");
+            $"tcp://{SERVER_ADDRESS}:{SERVER_PORT}/LangtonAntServer");
             if (remoteServerObj == null)
             {
                 Console.WriteLine("Could not locate server");
@@ -153,6 +153,8 @@ namespace LangtonAntClient
 		private Timer autoAdvanceTimer;
 		private int currentMove;
 		private readonly List<string> antSteps = new List<string>();
+		private readonly int SERVER_PORT = 8085;
+		private readonly string SERVER_ADDRESS = "localhost";
 
 		private void DrawAnt((int X, int Y) antPos, AntOrientation antOr)
 		{
@@ -213,8 +215,6 @@ namespace LangtonAntClient
 					return AntOrientation.Unknown;
 			}
 		}
-
-
 		private void DrawBlackFields(string[,] fieldArr)
 		{
 			double canvasWidth = mainCanvas.ActualWidth;
@@ -262,7 +262,7 @@ namespace LangtonAntClient
 			ShowState(currentMove, remoteServerObj.GetNextGameState(myGameId));
 		}
 
-		private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		private void AutoAdvanceSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
 			if (autoAdvanceTimer != null)
 			{
@@ -275,7 +275,7 @@ namespace LangtonAntClient
 			}
 		}
 
-		private void CheckBox_Checked(object sender, RoutedEventArgs e)
+		private void AutoAdvanceCheckBox_Checked(object sender, RoutedEventArgs e)
 		{
 			autoAdvanceEnabled = autoAdvanceCheckbox.IsChecked ?? false;
 

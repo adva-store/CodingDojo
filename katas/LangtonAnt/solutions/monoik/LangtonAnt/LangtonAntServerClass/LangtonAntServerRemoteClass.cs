@@ -6,6 +6,8 @@ using System.Windows.Media;
 
 namespace LangtonAntServerClass
 {
+    // Class representing "game logic" and server code for the Langton Ant.
+    // By Marcel Makowski, 12.06.2023
     public class LangtonAntServerRemoteClass : MarshalByRefObject
     {
 		private static readonly Dictionary<string, GameState> runningGameStates = new Dictionary<string, GameState>();
@@ -40,7 +42,9 @@ namespace LangtonAntServerClass
                 playField = new bool[playFieldSize, playFieldSize];
             }
 
-			internal string GetStateString()
+            // Returns the string representation of the game state.
+            // Example: (w,w,w,s,ow,s,s,w,w, …).
+            internal string GetStateString()
 			{
                 string result = "";
                 for (int y = 0; y < playFieldSize; y++)
@@ -60,12 +64,14 @@ namespace LangtonAntServerClass
 
 			private string GetOrientationString(AntOrientation antOrientation)
             {
+                // The letters represent German names (Nord, Ost, Sud, West)
                 if (antOrientation == AntOrientation.West) return "w";
                 if (antOrientation == AntOrientation.North) return "n";
                 if (antOrientation == AntOrientation.East) return "o";
                 if (antOrientation == AntOrientation.South) return "s";
                 return "";
             }
+
             private Color GetColor(int x, int y)
             {
                 var currField = playField[x,y];
@@ -76,12 +82,12 @@ namespace LangtonAntServerClass
 
             private string GetColorString(int x, int y)
             {
+                // The letters represent German names (Weiß, Schwarz)
                 var color = GetColor(x, y);
                 if (color == Colors.White) return "w";
                 if (color == Colors.Black) return "s";
 
                 return "";
-
             }
 
             private string GetColorString((int X, int Y) antPosition)
@@ -89,6 +95,8 @@ namespace LangtonAntServerClass
                 return GetColorString(antPosition.X, antPosition.Y);
             }
 
+            // Moves the ant according to the set of rules imposed
+            // by the definition of Langton Ant.
             internal void MoveAnt()
             {
 				string currentColor = GetColorString(antPos);
@@ -100,6 +108,9 @@ namespace LangtonAntServerClass
                 antOrientation = GetNextOrientation(antOrientation, currentColor);
             }
 
+            // Returns the next orientation of the ant, depending on the current
+            // orientation and the color of the field the ant is currently 
+            // occupying.
 			private AntOrientation GetNextOrientation(AntOrientation antOrientation, string currentColor)
 			{
                 if (currentColor == "w")
@@ -135,7 +146,10 @@ namespace LangtonAntServerClass
                 return AntOrientation.North;
 			}
 
-			private int GetDeltaX(AntOrientation antOrientation, string currentColor)
+            // Returns the change in X coordinate of the ant position depending
+            // on the ant's orientation and the color of the field it's 
+            // currently occupying.
+            private int GetDeltaX(AntOrientation antOrientation, string currentColor)
 			{
                 switch(antOrientation)
 				{
@@ -150,6 +164,9 @@ namespace LangtonAntServerClass
                 }
             }
 
+            // Returns the change in Y coordinate of the ant position depending
+            // on the ant's orientation and the color of the field it's 
+            // currently occupying.
 			private int GetDeltaY(AntOrientation antOrientation, string currentColor)
 			{
                 switch (antOrientation)
@@ -165,6 +182,7 @@ namespace LangtonAntServerClass
                 }
             }
 
+            // Changes the current field from black to white and vice versa.
 			internal void FlipCurrentField()
 			{
                 playField[antPos.X,antPos.Y] = !playField[antPos.X,antPos.Y];
@@ -172,6 +190,8 @@ namespace LangtonAntServerClass
 		}
         public enum AntOrientation { North, East, South, West, Unknown };
 
+        // Starts a new game with the given parameters and returns the unique
+        // game id for future communication with the client.
         public string StartNewGame(int fieldSize, int startPosX, int startPosY, AntOrientation orientation, int movesCount)
         {
             try
@@ -194,6 +214,9 @@ namespace LangtonAntServerClass
             }
         }
 
+        // Returns the current game state for the given game id in a form of a
+        // comma separated list of field colors, additionally containing the
+        // ant position and orientation.
         public string GetGameState(string gameId)
         {
             try
@@ -206,6 +229,9 @@ namespace LangtonAntServerClass
 			}
         }
 
+        // Returns the next game state for the given game id in a form of a
+        // comma separated list of field colors, additionally containing the
+        // ant position and orientation.
         public string GetNextGameState(string gameId)
 		{
             try
