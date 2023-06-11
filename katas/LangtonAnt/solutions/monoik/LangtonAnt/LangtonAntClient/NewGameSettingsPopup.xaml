@@ -1,0 +1,29 @@
+﻿<Window x:Class="LangtonAntClient.NewGameSettingsPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LangtonAntClient"
+        mc:Ignorable="d"
+        Title="New game settings" Height="263.266" Width="274.2">
+	<Grid>
+		<Label x:Name="label" Content="Play field size" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+		<Label x:Name="label_Copy" Content="Ant X" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+		<Label x:Name="label_Copy1" Content="Ant Y" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+		<Label x:Name="label_Copy2" Content="Ant orientation" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top"/>
+		<ComboBox x:Name="antOrientationComboBox" HorizontalAlignment="Left" Margin="130,104,0,0" VerticalAlignment="Top" Width="120" SelectedItem="1" SelectedIndex="0">
+			<ComboBoxItem Content="North" HorizontalAlignment="Left" Width="118"/>
+			<ComboBoxItem Content="East" HorizontalAlignment="Left" Width="118"/>
+			<ComboBoxItem Content="South" HorizontalAlignment="Left" Width="118"/>
+			<ComboBoxItem Content="West" HorizontalAlignment="Left" Width="118"/>
+		</ComboBox>
+		<TextBox x:Name="playFieldSizeTextBox" HorizontalAlignment="Left" Height="23" Margin="130,14,0,0" TextWrapping="Wrap" Text="11" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="antXTextBox" HorizontalAlignment="Left" Height="23" Margin="130,45,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="antYTextBox" HorizontalAlignment="Left" Height="23" Margin="130,76,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="120"/>
+		<Button x:Name="startGameButton" Content="Start!" HorizontalAlignment="Left" Margin="4,177,0,0" VerticalAlignment="Top" Width="246" Height="37" Click="StartGameButton_Click"/>
+		<Label x:Name="label_Copy3" Content="Moves to do" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"/>
+		<TextBox x:Name="movesToDoTextBox" HorizontalAlignment="Left" Height="23" Margin="130,131,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" Width="120"/>
+		<Label x:Name="label_Copy4" Content="(0 = unlimited)" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top"/>
+
+	</Grid>
+</Window>
