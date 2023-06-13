@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiPlaygroundApp.ChessboardConfigPage"
+             Title="ChessboardConfigPage">
+    <VerticalStackLayout HorizontalOptions="Center">
+        <Label Text="Column sizes (comma separated)" />
+        <Entry Placeholder="Column sizes" Text="{Binding ColumnSizes}"/>
+
+        <Label Text="Row sizes (comma separated)" />
+        <Entry Placeholder="Row sizes" Text="{Binding RowSizes}"/>
+
+        <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
+
+        <Label Text="Calculated white area" />
+        <Entry Text="{Binding TotalWhiteArea}" IsReadOnly="True"/>
+
+        <Label Text="Calculated black area" />
+        <Entry Text="{Binding TotalBlackArea}" IsReadOnly="True"/>
+
+
+        <Button Text="View!" Clicked="OnViewButtonClicked"/>
+</VerticalStackLayout>
+</ContentPage>
