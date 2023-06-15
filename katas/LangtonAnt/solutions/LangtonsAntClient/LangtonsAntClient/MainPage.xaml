@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LangtonsAntClient.MainPage">
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="550"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" 
+                  x:Name="PlayFieldGrid" 
+                  HorizontalOptions="Center" 
+                  VerticalOptions="Center"
+                  BackgroundColor = "Black"
+                  Padding = "1"
+                  RowSpacing = "1"
+                  ColumnSpacing = "1">
+            </Grid>
+            <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand"  Spacing="5" >
+                <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                    <Label x:Name="SizeSliderValueLabel"
+                       Text="{Binding Source={x:Reference SizeSlider},
+                                      Path=Value,
+                                      StringFormat='Kantenlänge: {0:F0}'}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                    <Slider x:Name="SizeSlider" Maximum="30" Minimum="5" ValueChanged="SizeSlider_ValueChanged" WidthRequest="400" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                    <Label x:Name="SpeedLabel" Text="Geschwindigkeit:" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Slider x:Name="SpeedSlider" Minimum="0" Maximum ="900" WidthRequest="400" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="5">
+                    <Entry x:Name="StartXEntry" Keyboard="Numeric" Placeholder="X-Position der Ameise" WidthRequest="170"/>
+                    <Entry x:Name="StartYEntry" Keyboard="Numeric" Placeholder="Y-Position der Ameise" WidthRequest="170"/>
+                    <Entry x:Name="NumberOfStepsEntry" Keyboard="Numeric" Placeholder="Anzahl der Schritte" WidthRequest="170"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Picker x:Name="DirectionPicker" Title="Blickrichtung der Ameise" HorizontalTextAlignment="Center">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Norden</x:String>
+                                <x:String>Osten</x:String>
+                                <x:String>Süden</x:String>
+                                <x:String>Westen</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Button x:Name="InitializeButton"
+                            Text="Start/Reset"
+                            HorizontalOptions="FillAndExpand"                            
+                            Clicked="InitializeButton_Clicked"/>
+                    <Button x:Name="NextStepButton"
+                            Text="Weiter"
+                            HorizontalOptions="FillAndExpand"                            
+                            Clicked="NextStepButton_Clicked"/>
+                    <Button x:Name="TimerButton"
+                            Text="Timer starten"
+                            HorizontalOptions="FillAndExpand"                            
+                            Clicked="TimerButton_Clicked"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
