@@ -1,0 +1,15 @@
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\bin\Debug\net6.0\StrangeChessboard.exe
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\bin\Debug\net6.0\StrangeChessboard.deps.json
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\bin\Debug\net6.0\StrangeChessboard.runtimeconfig.json
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\bin\Debug\net6.0\StrangeChessboard.dll
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\bin\Debug\net6.0\StrangeChessboard.pdb
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.csproj.AssemblyReference.cache
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.AssemblyInfoInputs.cache
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.AssemblyInfo.cs
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.csproj.CoreCompileInputs.cache
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.dll
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\refint\StrangeChessboard.dll
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.pdb
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\StrangeChessboard.genruntimeconfig.cache
+C:\Users\j.becker\source\repos\StrangeChessboard\StrangeChessboard\obj\Debug\net6.0\ref\StrangeChessboard.dll
